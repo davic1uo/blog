@@ -1,10 +1,9 @@
-baseurl = "https://davic1uo.github.io"
+baseurl = "https://davic1uo.github.io/"
 title = "luo blog posts"
 languageCode = "en-us"
 disqusShortname = "luo-me"
 MetaDataFormat = "toml"
 googleAnalytics = "UA-7131036-1"
-publishDir = "davic1uo.github.io"
 
 [author]
     name = "luo"
