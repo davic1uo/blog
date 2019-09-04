@@ -1,5 +1,5 @@
 ---
-title: "关于export命令""
+title: "关于export命令"
 date: 2019-09-04T19:53:46+08:00
 tags: ["shell", "bash"]
 categories: ["computer"]
