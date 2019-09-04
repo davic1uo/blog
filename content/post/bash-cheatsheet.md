@@ -2,7 +2,7 @@
 title: "Bash Cheatsheet"
 date: 2019-09-02T21:19:38+08:00
 tags: ["cheatsheet", "linux", "bash"]
-categories: ["cheatsheet"]
+categories: ["computer"]
 ---
 | 快捷键 | 用途                      |
 | ------ | ------------------------ |
