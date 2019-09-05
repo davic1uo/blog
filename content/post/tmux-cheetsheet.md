@@ -4,10 +4,6 @@ date: 2019-09-04T19:57:36+08:00
 tags: ["cheatsheet"]
 categories: ["computer"]
 ---
-# tmux cheatsheet
-
-[TOC]
-
 ### Overview
 
 tmux 可以划分为三个部分.

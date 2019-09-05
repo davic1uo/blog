@@ -27,6 +27,6 @@ categories: ["computer"]
 
 
 [^1]: 在没有安装GUI界面(X-window)的\*nix系统上，第一次登陆时的shell就是login-shell
-[^2]: 前提是在shell中设置了\$EDITOR. 如果是MacOS， 不要把\$EDITOR设置为mvim
+[^2]: 前提是在shell中设置了\$EDITOR. 如果是MacOS， 不要把$EDITOR设置为mvim
 [^3]: 如果是在MacOS上使用iTterm2，按command+o -> EditProfiles -> Keys 把Option键改为ESC+后，Option健就可以当Alt使用
 

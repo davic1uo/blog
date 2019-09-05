@@ -1,13 +1,31 @@
-baseurl = "https://davic1uo.github.io/"
-title = "luo blog posts"
-languageCode = "en-us"
-disqusShortname = "luo-me"
-MetaDataFormat = "toml"
-googleAnalytics = "UA-7131036-1"
+# config.toml
 
-[author]
-    name = "luo"
-[taxonomies]
-  category = "categories"
-  tag = "tags"
+baseURL = "https://your_web_site"
+title = "My Blog Posts"
+theme = "hugo-primer"
+languageCode = "ja"
+# If you are using Chinese, Japanese, or Korean, I highly recommend you to set this true.
+hasCJKLanguage = true
+summaryLength = 70
+# Code pen
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+googleAnalytics = "U-12345678-0"
 
+# Enter a copyright notice to display in the site footer.
+# To display a copyright symbol, type `&copy;`.
+copyright = "&copy;Luo 2019"
+
+[frontmatter]
+# update sitemap.xml's lastmod datetime by file change time, instead of git.
+lastmod = ["lastmod", ":fileModTime", ":default"]
+
+[params]
+description = "My personal blog post"
+twitter = "your_twitter_id"
+# You can use favicon by addin them manually.
+useIcon = true
+useTwitterCard = true
+
+shareTo = ["Twitter",  "Facebook", "Pocket"]
+#showFooterCredits = true

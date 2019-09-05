@@ -1,11 +1,9 @@
 ---
-title: "Shell Important Files"
+title: "Shell 常见配置文件"
 date: 2019-09-04T19:49:34+08:00
 tags: ["shell"]
 categories: ["computer"]
 ---
-# 关于shell的一些常见文件
-
 在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件.
 
 -  ~/.bashrc

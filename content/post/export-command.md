@@ -1,11 +1,9 @@
 ---
-title: "关于export命令"
+title: "About export command"
 date: 2019-09-04T19:53:46+08:00
 tags: ["shell", "bash"]
 categories: ["computer"]
 ---
-# 关于export命令
-
 `export`命令是在POSIX定义了的: [export is defined in POSIX](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export)定义中说
 
 > export - set the export attribute for variables

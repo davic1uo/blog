@@ -1,5 +1,5 @@
 ---
-title: "不同编码的区别"
+title: "编码标准和字符集"
 date: 2019-08-31T21:21:41+08:00
 tags: ["conputer-base"]
 categories: ["computer"]
