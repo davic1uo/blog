@@ -25,7 +25,7 @@ git add -A
 git commit -m "$msg"
 
 # Push source and build repos.
-git push -u origin master
+git push origin +master
 
 # Come Back
 cd ..
