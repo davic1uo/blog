@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'U-12345678-0', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Shell 常见配置文件 &ndash; My Blog Posts
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件. ~/.bashrc 针对不同用户的bash配置 ~/.bash_profile 用|My personal blog post">
+    
+
+    <meta name="apple-mobile-web-app-title" content="My Blog Posts">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="Shell 常见配置文件 | My Blog Posts">
+    <meta name="twitter:description" content="在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件. ~/.bashrc 针对不同用户的bash配置 ~/.bash_profile 用|My personal blog post">
+    <meta name="twitter:image" content="https://your_web_sitetwitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://your_web_site">
+    My Blog Posts
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Shell 常见配置文件</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/computer' class="muted-link">
+  <span class="Label Label--gray-darker">computer</span>
+</a>
+
+
+
+<a href='/tags/shell' class="muted-link">
+  <span class="Label Label--gray">shell</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-09-05. Published at: 2019-09-04.">
+        
+          Lastmod: 2019-09-05
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p>在进行个性化shell配置的时候, 经常会遇到许多配置文件, 很容易混乱.这里梳理一下关于shell的配置文件.</p>
+
+<ul>
+<li>~/.bashrc</li>
+</ul>
+
+<p>针对不同用户的bash配置</p>
+
+<ul>
+<li>~/.bash_profile</li>
+</ul>
+
+<p>用于login shell的系统初始化文件(主要是环境变量)</p>
+
+<ul>
+<li>/etc/profile</li>
+</ul>
+
+<p>针对所有用户的login shell的配置文件</p>
+
+<ul>
+<li>/etc/bashrc</li>
+</ul>
+
+<p>所有用户的bash配置(主要是环境变量).会被~/.bashrc读取</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  <span class="c1"># ~/.bashrc</span>
+  <span class="k">if</span> <span class="o">[</span> -f /etc/bashrc <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+          . /etc/bashrc
+  <span class="k">fi</span></code></pre></div>
+<hr />
+
+<p>配置文件的主要区别在</p>
+
+<ol>
+<li>login shell 还是 interactive-shell</li>
+<li>是属于系统的还是属于个人用户的</li>
+</ol>
+
+<p><strong>login shell</strong></p>
+
+<p>类似*profile的文件都是属于被login shell所使用. 比如 <code>~/.profile</code> <code>~/.bash_profile</code></p>
+
+<blockquote>
+<p>这些文件只在系统登陆时(login shell)被读取</p>
+</blockquote>
+
+<p><strong>interactive shell</strong></p>
+
+<p>基本上所有的*rc文件都是用于交互式shell的配置文件. 比如<code>~/.bashrc</code> <code>~/.zshrc</code></p>
+
+<blockquote>
+<p>这些文件会每次在程序启动时被读取</p>
+</blockquote>
+
+<p><a href="https://stackoverflow.com/questions/415403/whats-the-difference-between-bashrc-bash-profile-and-environment ">stackoverflow 上的回答</a></p>
+
+<p><strong>/etc属于系统</strong></p>
+
+<p>/etc/下的配置文件几乎都是属于系统的配置文件, 而在/home下(~)的配置文件则是属于个人用户的</p>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Shell 常见配置文件</b>
+      
+    </div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    &copy;Luo 2019 &middot; 
+
+    Powered by 
+    <a href="/" class="link-gray-dark">Knowledge</a>
+  </span>
+
+
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>

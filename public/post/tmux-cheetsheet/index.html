@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'U-12345678-0', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Tmux Cheetsheet &ndash; My Blog Posts
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="Overview tmux 可以划分为三个部分. session window pane 每当在终端中输入tmux 命令后, 会进入一个session 中的一个window的1个pane中.这三个名词有点像|My personal blog post">
+    
+
+    <meta name="apple-mobile-web-app-title" content="My Blog Posts">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="Tmux Cheetsheet | My Blog Posts">
+    <meta name="twitter:description" content="Overview tmux 可以划分为三个部分. session window pane 每当在终端中输入tmux 命令后, 会进入一个session 中的一个window的1个pane中.这三个名词有点像|My personal blog post">
+    <meta name="twitter:image" content="https://your_web_sitetwitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://your_web_site">
+    My Blog Posts
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Tmux Cheetsheet</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/computer' class="muted-link">
+  <span class="Label Label--gray-darker">computer</span>
+</a>
+
+
+
+<a href='/tags/cheatsheet' class="muted-link">
+  <span class="Label Label--gray">cheatsheet</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-09-05. Published at: 2019-09-04.">
+        
+          Lastmod: 2019-09-05
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    
+
+<h3 id="overview">Overview</h3>
+
+<p>tmux 可以划分为三个部分.</p>
+
+<ol>
+<li>session</li>
+<li>window</li>
+<li>pane</li>
+</ol>
+
+<p>每当在终端中输入<code>tmux</code> 命令后, 会进入一个<code>session</code> 中的一个<code>window</code>的1个<code>pane</code>中.这三个名词有点像集合.</p>
+
+<p>$$ pane \subset window \subset session $$</p>
+
+<p><strong>session</strong></p>
+
+<p>可以有1个或多个<code>window</code></p>
+
+<p><strong>window</strong></p>
+
+<p>可以有1个或多个<code>pane</code></p>
+
+<hr />
+
+<p>进入<code>session</code>中, ==所有的命令都是通过<code>bind-key</code> + <code>cmd</code> 的形式才可以生效==. 默认的<code>bind-key</code> 是<strong>Ctrl-b</strong> (Ctrl 和 b)也许经常按<strong>Ctrl-b</strong>很不习惯. 可以在<code>~/.tmux.conf</code>中修改为自己喜欢的<code>bind-key</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">vim ~/.tmux.conf
+unbind C-b    <span class="c1"># 取消原来的bind-key</span> 
+set-option -g prefix M-y    <span class="c1"># 设置新的bind-key为Alt-y</span></code></pre></div>
+<blockquote>
+<p>如果映射键盘上的<code>Windows</code>键或者其他的键, 却又不知道按键的编码, 可以在有GUI的Linux系统中运行<code>xev</code> 命令,然后按下相应的键, 就会显示对应的按键代码</p>
+</blockquote>
+
+<h3 id="从普通终端进入tmux">从普通终端进入tmux</h3>
+
+<p>安装好tmux后, 可以直接在终端中输入:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">tmux</code></pre></div>
+<p>就可以进入tmux.这会让tmux打开一个新的session并且session的名称是默认的. 如果想在新建时, 给它起一个名称, 可以用下面的命令:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">tmux new -s tmux1 </code></pre></div>
+<p>将会建立一个名称为tmux1的session.</p>
+
+<h3 id="session">Session</h3>
+
+<p>进入tmux的session后, 就可以使用快捷键了. 与session相关的常用快捷键有👇</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">快捷键</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">C-b :new</td>
+<td align="left">新建session</td>
+</tr>
+
+<tr>
+<td align="right">C-b :new -s tmux2</td>
+<td align="left">新建名为tmux2的session</td>
+</tr>
+
+<tr>
+<td align="right">C-b s</td>
+<td align="left">列出已存在的session</td>
+</tr>
+
+<tr>
+<td align="right">C-b $</td>
+<td align="left">重命名当前session</td>
+</tr>
+
+<tr>
+<td align="right">C-b d</td>
+<td align="left">断开(detach)与当前session的连接</td>
+</tr>
+
+<tr>
+<td align="right">C-b (</td>
+<td align="left">进入前一个session</td>
+</tr>
+
+<tr>
+<td align="right">C-b )</td>
+<td align="left">进入后一个session</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="window-tab">Window(Tab)</h3>
+
+<p>tmux的window就像浏览器上的页签(Tab). 关于Window的常用快捷键有👇</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">快捷键</th>
+<th align="left">用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">C-b c</td>
+<td align="left">在session中新建window</td>
+</tr>
+
+<tr>
+<td align="right">C-b &amp;</td>
+<td align="left">关闭当前window</td>
+</tr>
+
+<tr>
+<td align="right">C-b w</td>
+<td align="left">列出当前session的所有window</td>
+</tr>
+
+<tr>
+<td align="right">C-b n</td>
+<td align="left">进入下一个(next)window</td>
+</tr>
+
+<tr>
+<td align="right">C-b p</td>
+<td align="left">进入上一个(previous)window</td>
+</tr>
+
+<tr>
+<td align="right">C-b ,</td>
+<td align="left">重命名当前window</td>
+</tr>
+
+<tr>
+<td align="right">C-b f</td>
+<td align="left">在所有window中的查找内容</td>
+</tr>
+
+<tr>
+<td align="right">C-b &lsquo;</td>
+<td align="left">按照索引查找window</td>
+</tr>
+
+<tr>
+<td align="right">C-b  num(0-9的数字)</td>
+<td align="left">进入索引号为num的window</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="pane-split">Pane(split)</h3>
+
+<p>tmux的面板(pane)像vim里的split窗口. 关于pane的快捷键有👇</p>
+
+<table>
+<thead>
+<tr>
+<th align="right">快捷键</th>
+<th>用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">C-b %</td>
+<td>垂直分割</td>
+</tr>
+
+<tr>
+<td align="right">C-b &ldquo;</td>
+<td>水平分割</td>
+</tr>
+
+<tr>
+<td align="right">C-b o</td>
+<td>切换光标到其他pane中</td>
+</tr>
+
+<tr>
+<td align="right">C-b 方向键</td>
+<td>切换光标到其他pane中</td>
+</tr>
+
+<tr>
+<td align="right">C-b q</td>
+<td>显示每个pane的序号, 此时按序号可进入对应的pane</td>
+</tr>
+
+<tr>
+<td align="right">C-b x</td>
+<td>关闭pane</td>
+</tr>
+
+<tr>
+<td align="right">C-b 空格</td>
+<td>重置pane布局(内置预设布局)</td>
+</tr>
+
+<tr>
+<td align="right">C-b !</td>
+<td>使pane变为window</td>
+</tr>
+
+<tr>
+<td align="right">C-b {</td>
+<td>左移pane</td>
+</tr>
+
+<tr>
+<td align="right">C-b }</td>
+<td>右移pane</td>
+</tr>
+
+<tr>
+<td align="right">C-b z</td>
+<td>最大化当前pane(再按一次恢复)</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="同步使用所有pane">同步使用所有Pane</h4>
+
+<p>如果想让所有pane同时接收键盘上的输入, 可以在某一个pane中输入Ctrl-b 然后按下冒号(:)会进入tmux命令行,然后输入</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">:setw synchronize-panes</code></pre></div>
+<p>将开启同步pane模式, 再执行一次该命令则会关闭. <a href="https://sanctum.geek.nz/arabesque/sync-tmux-panes/">演示</a></p>
+
+<h4 id="改变pane大小">改变pane大小</h4>
+
+<table>
+<thead>
+<tr>
+<th align="right">按键</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="right">Ctrl-b M-↑</td>
+<td>向上增加5个单位</td>
+</tr>
+
+<tr>
+<td align="right">Ctrl-b M-↓</td>
+<td>向下增加5个单位</td>
+</tr>
+
+<tr>
+<td align="right">Ctrl-b M-←</td>
+<td>向左增加5个单位</td>
+</tr>
+
+<tr>
+<td align="right">Ctrl-b M-→</td>
+<td>向右增加5个单位</td>
+</tr>
+</tbody>
+</table>
+
+<p>M键代表Alt</p>
+
+<p>也可以自定义长度移动, 按Ctrl-b再按冒号(:)进入命令模式</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">:resize-pane -R <span class="m">20</span>  <span class="c1"># 向右扩展20个单位</span>
+:resize-pane -L        <span class="c1"># 向左扩展1个单位</span>
+:resize-pane -U        <span class="c1"># 向上扩展1个单位</span>
+:resize-pane -D        <span class="c1"># 向下扩展1个单位</span>
+
+:resize-pane -t <span class="m">2</span> -R <span class="m">20</span> <span class="c1"># 将2号pane向右扩展20个单位</span></code></pre></div>
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Tmux Cheetsheet</b>
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#从普通终端进入tmux">从普通终端进入tmux</a></li>
+<li><a href="#session">Session</a></li>
+<li><a href="#window-tab">Window(Tab)</a></li>
+<li><a href="#pane-split">Pane(split)</a>
+<ul>
+<li><a href="#同步使用所有pane">同步使用所有Pane</a></li>
+<li><a href="#改变pane大小">改变pane大小</a></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    &copy;Luo 2019 &middot; 
+
+    Powered by 
+    <a href="/" class="link-gray-dark">Knowledge</a>
+  </span>
+
+
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>

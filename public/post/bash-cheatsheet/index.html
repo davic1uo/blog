@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'U-12345678-0', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  Bash Cheatsheet &ndash; My Blog Posts
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="快捷键 用途 ctrl-c 终止程序 ctrl-d 退出login-shell1 alt-f 光标向右跳转，每次1个单词 alt-b 光标向左跳转，每次1个单词 ctrl-a 光标跳转到开头 ctrl-e 光标跳转到最后 ctrl-l|My personal blog post">
+    
+
+    <meta name="apple-mobile-web-app-title" content="My Blog Posts">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="Bash Cheatsheet | My Blog Posts">
+    <meta name="twitter:description" content="快捷键 用途 ctrl-c 终止程序 ctrl-d 退出login-shell1 alt-f 光标向右跳转，每次1个单词 alt-b 光标向左跳转，每次1个单词 ctrl-a 光标跳转到开头 ctrl-e 光标跳转到最后 ctrl-l|My personal blog post">
+    <meta name="twitter:image" content="https://your_web_sitetwitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://your_web_site">
+    My Blog Posts
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">Bash Cheatsheet</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/computer' class="muted-link">
+  <span class="Label Label--gray-darker">computer</span>
+</a>
+
+
+
+<a href='/tags/cheatsheet' class="muted-link">
+  <span class="Label Label--gray">cheatsheet</span>
+</a>
+
+<a href='/tags/linux' class="muted-link">
+  <span class="Label Label--gray">linux</span>
+</a>
+
+<a href='/tags/bash' class="muted-link">
+  <span class="Label Label--gray">bash</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-09-05. Published at: 2019-09-02.">
+        
+          Lastmod: 2019-09-05
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>用途</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ctrl-c</td>
+<td>终止程序</td>
+</tr>
+
+<tr>
+<td>ctrl-d</td>
+<td>退出login-shell<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup></td>
+</tr>
+
+<tr>
+<td>alt-f</td>
+<td>光标向右跳转，每次1个单词</td>
+</tr>
+
+<tr>
+<td>alt-b</td>
+<td>光标向左跳转，每次1个单词</td>
+</tr>
+
+<tr>
+<td>ctrl-a</td>
+<td>光标跳转到开头</td>
+</tr>
+
+<tr>
+<td>ctrl-e</td>
+<td>光标跳转到最后</td>
+</tr>
+
+<tr>
+<td>ctrl-l</td>
+<td>🆑清除(重绘)屏幕</td>
+</tr>
+
+<tr>
+<td>ctrl-r</td>
+<td>🔍搜索命令行历史</td>
+</tr>
+
+<tr>
+<td>ctrl-g</td>
+<td>退出ctrl-r</td>
+</tr>
+
+<tr>
+<td>sudo!!</td>
+<td>重新以sudo身份执行上一条命令</td>
+</tr>
+
+<tr>
+<td>ctrl-k</td>
+<td>✂️剪切从光标到命令行行末尾的所有内容</td>
+</tr>
+
+<tr>
+<td>ctrl-u</td>
+<td>✂️剪切从光标到命令行最开始的所有内容</td>
+</tr>
+
+<tr>
+<td>ctrl-y</td>
+<td>粘贴剪切内容(ctrl-k ctrl-u)</td>
+</tr>
+
+<tr>
+<td>ctrl-w</td>
+<td>✂️剪切1个单词(word)</td>
+</tr>
+
+<tr>
+<td>ctrl-x-e(按住ctrl-x-e)</td>
+<td>在$EDITOR中打开命令行输入的内容<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup></td>
+</tr>
+
+<tr>
+<td>alt-.(英文句号)</td>
+<td>粘贴上一条命令的参数<sup class="footnote-ref" id="fnref:3"><a href="#fn:3">3</a></sup></td>
+</tr>
+</tbody>
+</table>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">在没有安装GUI界面(X-window)的*nix系统上，第一次登陆时的shell就是login-shell
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">前提是在shell中设置了\$EDITOR. 如果是MacOS， 不要把$EDITOR设置为mvim
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+<li id="fn:3">如果是在MacOS上使用iTterm2，按command+o -&gt; EditProfiles -&gt; Keys 把Option键改为ESC+后，Option健就可以当Alt使用
+ <a class="footnote-return" href="#fnref:3"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>Bash Cheatsheet</b>
+      
+    </div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    &copy;Luo 2019 &middot; 
+
+    Powered by 
+    <a href="/" class="link-gray-dark">Knowledge</a>
+  </span>
+
+
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>

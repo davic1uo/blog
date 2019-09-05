@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'U-12345678-0', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+  About export command &ndash; My Blog Posts
+
+    </title>
+    
+    
+    <meta name="description" property="og:description" content="export命令是在POSIX定义了的: export is defined in POSIX定义中说 export - set the export attribute for variables 字面上理解是给变量(variable)设置对外的属性(ex|My personal blog post">
+    
+
+    <meta name="apple-mobile-web-app-title" content="My Blog Posts">
+    
+    
+    <link rel="icon" href="/favicon-64.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="mask-icon" size="any" href="/pinned-icon.svg">
+    
+    
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@your_twitter_id">
+    <meta name="twitter:creator" content="@your_twitter_id">
+    <meta name="twitter:title" content="About export command | My Blog Posts">
+    <meta name="twitter:description" content="export命令是在POSIX定义了的: export is defined in POSIX定义中说 export - set the export attribute for variables 字面上理解是给变量(variable)设置对外的属性(ex|My personal blog post">
+    <meta name="twitter:image" content="https://your_web_sitetwitter-card.png">
+    
+
+
+    <link rel="stylesheet" href="/assets/syntax.css">
+    <link rel="stylesheet" href="/assets/primer-build.css">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+
+
+  <body class="bg-gray">
+    <div id="holy" class="container-lg bg-white h-100">
+
+      <div id="header" class="px-1 bg-white">
+        <nav class="UnderlineNav UnderlineNav--right px-2">
+  <a class="UnderlineNav-actions muted-link h2" href="https://your_web_site">
+    My Blog Posts
+  </a>
+
+  
+  
+</nav>
+
+      </div>
+
+      <div role="main" id="main" class="holy-main markdown-body px-4 bg-white">
+        
+
+<div class="Subhead">
+  <div class="Subhead-heading">
+    <div class="h1 mt-3 mb-1">About export command</div>
+  </div>
+  <div class="Subhead-description">
+    
+
+
+<a href='/categories/computer' class="muted-link">
+  <span class="Label Label--gray-darker">computer</span>
+</a>
+
+
+
+<a href='/tags/shell' class="muted-link">
+  <span class="Label Label--gray">shell</span>
+</a>
+
+<a href='/tags/bash' class="muted-link">
+  <span class="Label Label--gray">bash</span>
+</a>
+
+
+
+    
+    <div class="float-md-right">
+      <span title="Lastmod: 2019-09-05. Published at: 2019-09-04.">
+        
+          Lastmod: 2019-09-05
+        
+      </span>
+    </div>
+    
+  </div>
+</div>
+<article>
+  
+  <section class="pb-6 mb-3 border-bottom">
+    <p><code>export</code>命令是在POSIX定义了的: <a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#export">export is defined in POSIX</a>定义中说</p>
+
+<blockquote>
+<p>export - set the export attribute for variables</p>
+</blockquote>
+
+<p>字面上理解是给变量(variable)设置<em>对外的属性</em>(export attribute). 在网上搜索export命令的作用, 都会有&rdquo;设置环境变量&rdquo;这个答案. *export attribute*和环境变量的目的我觉得其实是类似的.</p>
+
+<p>假如在网上搜索&rdquo;如何设置shell环境变量&rdquo;时, 答案可能大概有这几种(假如要设置环境变量\$JAVA_HOME:</p>
+
+<ol>
+<li>直接在shell中执行<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+<li>在/etc/profile中添加<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+<li>在~/.bash_profile中添加<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code></li>
+</ol>
+
+<p>三种方式都可以设置\$JAVA_HOME环境变量.我的问题是, 既然写在文件里可以设置环境变量,那么执行(1)会把<code>export JAVA_HOME=/opt/jdk/jdk1.8.0_161</code>写到哪个文件去?</p>
+
+<p>假如只执行(1)之后,如果再去查看<code>~/.bash_profile</code>和<code>/etc/profile</code>会发现里面并没有刚刚执行的内容.</p>
+
+<p><strong>这是由于export 并不向任何文件写内容.它的目标是当前进程的内存.</strong></p>
+
+<p>/etc/profile文件是针对<strong>所有用户</strong>的login shell<sup class="footnote-ref" id="fnref:1"><a href="#fn:1">1</a></sup>的配置文件.仅能被login shell读取.当l读取这个文件时,export的变量对所有用户都生效.</p>
+
+<p>~/.bash_profile<sup class="footnote-ref" id="fnref:2"><a href="#fn:2">2</a></sup>是针对<strong>具体用户</strong>的login shell的配置文件</p>
+
+<p>另外需要注意的是<strong>所有在shell中执行的命令都是当前shell的子进程</strong>. 所以自然地也就继承了主shell export的变量</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">login shell 由很多种, 比如 <a href="https://bash.cyberciti.biz/guide/Bash">bash</a>, <a href="https://bash.cyberciti.biz/guide/Ksh">ksh</a>, <a href="https://bash.cyberciti.biz/guide/Sh">sh</a>
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+<li id="fn:2">当login shell是bash时
+ <a class="footnote-return" href="#fnref:2"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+  </section>
+
+  <section>
+    
+      
+    
+  </section>
+</article>
+
+      </div>
+
+      <div id="side" class="pr-1 bg-white">
+        <aside class="pr-3">
+          
+  
+    <div id="toc" class="Box Box--blue mb-3">
+      <b>About export command</b>
+      
+    </div>
+  
+
+  
+    
+    
+      <div>
+        
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        
+
+        
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button&size=small&mobile_iframe=true&width=61&height=20&appId" width="61" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        
+
+        
+
+        
+          <a data-pocket-label="pocket" data-pocket-count="none" class="pocket-btn" data-lang="en"></a>
+          <script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var j=d.createElement("script");j.id=i;j.src="https://widgets.getpocket.com/v1/j/btn.js?v=1";var w=d.getElementById(i);d.body.appendChild(j);}}(document,"pocket-btn-js");</script>
+        
+
+      </div>
+    
+  
+
+        </aside>
+      </div>
+
+      <div id="footer" class="pt-2 pb-3 bg-white text-center">
+        
+
+  <span class="text-small text-gray">
+    &copy;Luo 2019 &middot; 
+
+    Powered by 
+    <a href="/" class="link-gray-dark">Knowledge</a>
+  </span>
+
+
+      </div>
+    </div>
+
+
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
+  </body>
+</html>

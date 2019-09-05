@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on My Blog Posts</title>
+    <link>https://your_web_site/tags/linux/</link>
+    <description>Recent content in linux on My Blog Posts</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>&amp;copy;Luo 2019</copyright>
+    <lastBuildDate>Mon, 02 Sep 2019 21:19:38 +0800</lastBuildDate>
+    
+	<atom:link href="https://your_web_site/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Bash Cheatsheet</title>
+      <link>https://your_web_site/post/bash-cheatsheet/</link>
+      <pubDate>Mon, 02 Sep 2019 21:19:38 +0800</pubDate>
+      
+      <guid>https://your_web_site/post/bash-cheatsheet/</guid>
+      <description>快捷键 用途 ctrl-c 终止程序 ctrl-d 退出login-shell1 alt-f 光标向右跳转，每次1个单词 alt-b 光标向左跳转，每次1个单词 ctrl-a 光标跳转到开头 ctrl-e 光标跳转到最后 ctrl-l</description>
+    </item>
+    
+  </channel>
+</rss>
