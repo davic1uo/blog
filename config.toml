@@ -1,5 +1,5 @@
 # config.toml
-baseURL = "blog.luozx.me"
+baseURL = "https://davic1uo.github.io/"
 title = "My Blog Posts"
 languageCode = "ja"
 # If you are using Chinese, Japanese, or Korean, I highly recommend you to set this true.
